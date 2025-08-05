@@ -1,864 +1,2054 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ajira Digital Club - Seme TVC</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-white dark:bg-gray-900 transition-colors duration-300">
     <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle" class="fixed z-50 bottom-6 left-6 bg-red-600 dark:bg-green-600 text-white p-3 rounded-full shadow-lg">
-        <i class="fas fa-moon dark:hidden"></i>
-        <i class="fas fa-sun hidden dark:block"></i>
+    <button
+      id="darkModeToggle"
+      class="fixed z-50 bottom-6 left-6 bg-red-600 dark:bg-green-600 text-white p-3 rounded-full shadow-lg"
+    >
+      <i class="fas fa-moon dark:hidden"></i>
+      <i class="fas fa-sun hidden dark:block"></i>
     </button>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/254XXXXXXXXX?text=Hello,+I+want+to+join+Ajira+Club!" class="fixed z-50 bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg pulse">
-        <i class="fab fa-whatsapp text-2xl"></i>
+    <a
+      href="https://wa.me/254XXXXXXXXX?text=Hello,+I+want+to+join+Ajira+Club!"
+      class="fixed z-50 bottom-6 right-6 bg-green-600 text-white p-4 rounded-full shadow-lg pulse"
+    >
+      <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
-        <!-- AI Chatbot Button -->
-    <button id="chatbotToggle" class="fixed z-50 bottom-24 right-6 bg-red-600 hover:bg-red-700 dark:bg-green-600 dark:hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition">
-        <i class="fas fa-robot text-2xl"></i>
+    <!-- AI Chatbot Button -->
+    <button
+      id="chatbotToggle"
+      class="fixed z-50 bottom-24 right-6 bg-red-600 hover:bg-red-700 dark:bg-green-600 dark:hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition"
+    >
+      <i class="fas fa-robot text-2xl"></i>
     </button>
 
     <!-- Chatbot Modal -->
-    <div id="chatbotModal" class="hidden fixed z-50 bottom-32 right-6 w-80 max-h-[75vh] flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
-        <!-- Header -->
-        <div class="bg-red-600 dark:bg-green-600 text-white p-3 flex justify-between items-center">
-            <h3 class="font-bold text-sm">Ajira Digital Assistant</h3>
-            <button id="closeChatbot" class="text-white hover:text-gray-200 transition">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
+    <div
+      id="chatbotModal"
+      class="hidden fixed z-50 bottom-32 right-6 w-80 max-h-[75vh] flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden"
+    >
+      <!-- Header -->
+      <div
+        class="bg-red-600 dark:bg-green-600 text-white p-3 flex justify-between items-center"
+      >
+        <h3 class="font-bold text-sm">Ajira Digital Assistant</h3>
+        <button
+          id="closeChatbot"
+          class="text-white hover:text-gray-200 transition"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
-        <!-- Messages -->
-        <div id="chatbotMessages" class="flex-1 p-4 overflow-y-auto space-y-3">
-            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-[80%]">
-                <p>Hello! I'm here to help you with information about Ajira Digital Club. What would you like to know?</p>
-            </div>
+      <!-- Messages -->
+      <div id="chatbotMessages" class="flex-1 p-4 overflow-y-auto space-y-3">
+        <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-[80%]">
+          <p>
+            Hello! I'm here to help you with information about Ajira Digital
+            Club. What would you like to know?
+          </p>
         </div>
+      </div>
 
-        <!-- Input -->
-        <div class="p-3 border-t border-gray-200 dark:border-gray-700 flex gap-2">
-            <input type="text" id="chatbotInput" placeholder="Type your question..." class="flex-1 p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none">
-            <button id="sendChatbotMessage" class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg transition">
-                Send
-            </button>
-        </div>
+      <!-- Input -->
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 flex gap-2">
+        <input
+          type="text"
+          id="chatbotInput"
+          placeholder="Type your question..."
+          class="flex-1 p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none"
+        />
+        <button
+          id="sendChatbotMessage"
+          class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg transition"
+        >
+          Send
+        </button>
+      </div>
     </div>
-
 
     <!-- Navigation -->
     <nav class="bg-white dark:bg-gray-900 shadow-md fixed w-full z-40">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="images/ajira-logo.webp" alt="Ajira Digital Logo" class="h-10 mr-3">
-                <span class="text-xl font-bold text-red-600 dark:text-green-500">Ajira Digital Club</span>
-            </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Home</a>
-                <a href="#about" class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">About</a>
-                <a href="#services" class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Services</a>
-                <a href="#gallery" class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Gallery</a>
-                <a href="#events" class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Events</a>
-                <a href="#contact" class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Contact</a>
-            </div>
-            <button id="mobileMenuButton" class="md:hidden text-gray-800 dark:text-white">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <img
+            src="images/ajira-logo.webp"
+            alt="Ajira Digital Logo"
+            class="h-10 mr-3"
+          />
+          <span class="text-xl font-bold text-red-600 dark:text-green-500"
+            >Ajira Digital Club</span
+          >
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 pb-4 px-4">
-            <a href="#home" class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Home</a>
-            <a href="#about" class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">About</a>
-            <a href="#services" class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Services</a>
-            <a href="#gallery" class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Gallery</a>
-            <a href="#events" class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Events</a>
-            <a href="#contact" class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500">Contact</a>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+            >Services</a
+          >
+          <a
+            href="#gallery"
+            class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+            >Gallery</a
+          >
+          <a
+            href="#events"
+            class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+            >Events</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+            >Contact</a
+          >
         </div>
+        <button
+          id="mobileMenuButton"
+          class="md:hidden text-gray-800 dark:text-white"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white dark:bg-gray-900 pb-4 px-4"
+      >
+        <a
+          href="#home"
+          class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+          >Services</a
+        >
+        <a
+          href="#gallery"
+          class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+          >Gallery</a
+        >
+        <a
+          href="#events"
+          class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+          >Events</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-green-500"
+          >Contact</a
+        >
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-gray-900">
-            <img src="images/cover.jpg" alt="College Campus" class="w-full h-full object-cover opacity-70">
+    <section
+      id="home"
+      class="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-gray-900">
+        <img
+          src="images/cover.jpg"
+          alt="College Campus"
+          class="w-full h-full object-cover opacity-70"
+        />
+      </div>
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="relative z-10 text-center px-4 max-w-4xl mx-auto fade-in">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+          Ajira Digital Club <span class="text-green-400">Seme TVC</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white mb-8">
+          Empowering Students with Digital Skills for the Future Workforce
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#join"
+            class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300"
+            >Join Now <i class="fas fa-arrow-right ml-2"></i
+          ></a>
+          <a
+            href="#about"
+            class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300"
+            >Learn More <i class="fas fa-chevron-down ml-2"></i
+          ></a>
         </div>
-        <div class="absolute inset-0 hero-gradient"></div>
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto fade-in">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Ajira Digital Club <span class="text-green-400">Seme TVC</span></h1>
-            <p class="text-xl md:text-2xl text-white mb-8">Empowering Students with Digital Skills for the Future Workforce</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#join" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300">Join Now <i class="fas fa-arrow-right ml-2"></i></a>
-                <a href="#about" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300">Learn More <i class="fas fa-chevron-down ml-2"></i></a>
-            </div>
-        </div>
-        <div class="absolute bottom-10 left-0 right-0 text-center">
-            <a href="#about" class="text-white animate-bounce inline-block">
-                <i class="fas fa-chevron-down text-3xl"></i>
-            </a>
-        </div>
+      </div>
+      <div class="absolute bottom-10 left-0 right-0 text-center">
+        <a href="#about" class="text-white animate-bounce inline-block">
+          <i class="fas fa-chevron-down text-3xl"></i>
+        </a>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="absolute bottom-25 left-10 floating hidden md:block">
-                    <img src="images/konza-Photoroom.png" alt="Floating element" class="w-20 h-20">
-                </div>
-                <div class="absolute bottom-25 right-10 floating hidden md:block">
-                    <img src="images/seme-Photoroom.png" alt="Floating element" class="w-20 h-20">
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">About Ajira Digital Club</h2>
-                <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">We are a student-led organization dedicated to equipping members with digital skills for the modern workforce.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="text-red-600 dark:text-green-500 mb-4">
-                        <i class="fas fa-bullseye text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Our Mission</h3>
-                    <p class="text-gray-600 dark:text-gray-300">To bridge the digital skills gap among students by providing training, mentorship, and resources for online work opportunities.</p>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="text-red-600 dark:text-green-500 mb-4">
-                        <i class="fas fa-eye text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Our Vision</h3>
-                    <p class="text-gray-600 dark:text-gray-300">A future where every student has access to digital skills training and can leverage online opportunities for economic empowerment.</p>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="text-red-600 dark:text-green-500 mb-4">
-                        <i class="fas fa-flag-checkered text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Our Goals</h3>
-                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
-                        <li>Train 500+ students annually</li>
-                        <li>Create 200+ digital work profiles</li>
-                        <li>Facilitate 50+ online jobs</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Animated Infographic -->
-            <div class="mt-16 bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
-                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">Digital Job Opportunities</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <div class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
-                            <span class="text-4xl font-bold text-red-600 dark:text-green-500">75%</span>
-                        </div>
-                        <p class="text-gray-700 dark:text-gray-300 font-medium">Growth in digital jobs</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
-                            <span class="text-4xl font-bold text-red-600 dark:text-green-500">$25B</span>
-                        </div>
-                        <p class="text-gray-700 dark:text-gray-300 font-medium">Freelance market size</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
-                            <span class="text-4xl font-bold text-red-600 dark:text-green-500">1.5M</span>
-                        </div>
-                        <p class="text-gray-700 dark:text-gray-300 font-medium">Digital jobs in Africa</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
-                            <span class="text-4xl font-bold text-red-600 dark:text-green-500">85%</span>
-                        </div>
-                        <p class="text-gray-700 dark:text-gray-300 font-medium">Remote work adoption</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <div class="absolute bottom-25 left-10 floating hidden md:block">
+            <img
+              src="images/konza-Photoroom.png"
+              alt="Floating element"
+              class="w-20 h-20"
+            />
+          </div>
+          <div class="absolute bottom-25 right-10 floating hidden md:block">
+            <img
+              src="images/seme-Photoroom.png"
+              alt="Floating element"
+              class="w-20 h-20"
+            />
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            About Ajira Digital Club
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            We are a student-led organization dedicated to equipping members
+            with digital skills for the modern workforce.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+          >
+            <div class="text-red-600 dark:text-green-500 mb-4">
+              <i class="fas fa-bullseye text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Our Mission
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              To bridge the digital skills gap among students by providing
+              training, mentorship, and resources for online work opportunities.
+            </p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+          >
+            <div class="text-red-600 dark:text-green-500 mb-4">
+              <i class="fas fa-eye text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Our Vision
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              A future where every student has access to digital skills training
+              and can leverage online opportunities for economic empowerment.
+            </p>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+          >
+            <div class="text-red-600 dark:text-green-500 mb-4">
+              <i class="fas fa-flag-checkered text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Our Goals
+            </h3>
+            <ul
+              class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2"
+            >
+              <li>Train 500+ students annually</li>
+              <li>Create 200+ digital work profiles</li>
+              <li>Facilitate 50+ online jobs</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Animated Infographic -->
+        <div class="mt-16 bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
+          <h3
+            class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8"
+          >
+            Digital Job Opportunities
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <div
+                class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4"
+              >
+                <span
+                  class="text-4xl font-bold text-red-600 dark:text-green-500"
+                  >75%</span
+                >
+              </div>
+              <p class="text-gray-700 dark:text-gray-300 font-medium">
+                Growth in digital jobs
+              </p>
+            </div>
+            <div class="text-center">
+              <div
+                class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4"
+              >
+                <span
+                  class="text-4xl font-bold text-red-600 dark:text-green-500"
+                  >$25B</span
+                >
+              </div>
+              <p class="text-gray-700 dark:text-gray-300 font-medium">
+                Freelance market size
+              </p>
+            </div>
+            <div class="text-center">
+              <div
+                class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4"
+              >
+                <span
+                  class="text-4xl font-bold text-red-600 dark:text-green-500"
+                  >1.5M</span
+                >
+              </div>
+              <p class="text-gray-700 dark:text-gray-300 font-medium">
+                Digital jobs in Africa
+              </p>
+            </div>
+            <div class="text-center">
+              <div
+                class="h-40 w-40 mx-auto bg-red-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4"
+              >
+                <span
+                  class="text-4xl font-bold text-red-600 dark:text-green-500"
+                  >85%</span
+                >
+              </div>
+              <p class="text-gray-700 dark:text-gray-300 font-medium">
+                Remote work adoption
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Services & Activities</h2>
-                <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">We offer comprehensive programs to help students develop digital skills and connect with opportunities.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center">
-                        <i class="fas fa-laptop-code text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Digital Training</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Comprehensive courses in digital marketing, programming, graphic design, and more.</p>
-                        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Beginner to advanced levels</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Hands-on practical sessions</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Certification upon completion</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center">
-                        <i class="fas fa-hands-helping text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mentorship</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Guidance from experienced professionals in various digital fields.</p>
-                        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>One-on-one mentorship</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Career guidance</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Portfolio reviews</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center">
-                        <i class="fas fa-briefcase text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Freelancing</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Support in finding and managing online work opportunities.</p>
-                        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Profile setup assistance</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Job search strategies</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Payment management</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center">
-                        <i class="fas fa-users text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Networking</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Connect with like-minded students and industry professionals.</p>
-                        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Industry meetups</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Alumni network</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"></i>
-                                <span>Collaboration opportunities</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Our Services & Activities
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            We offer comprehensive programs to help students develop digital
+            skills and connect with opportunities.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center"
+            >
+              <i class="fas fa-laptop-code text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Digital Training
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Comprehensive courses in digital marketing, programming, graphic
+                design, and more.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Beginner to advanced levels</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Hands-on practical sessions</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Certification upon completion</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center"
+            >
+              <i class="fas fa-hands-helping text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Mentorship
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Guidance from experienced professionals in various digital
+                fields.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>One-on-one mentorship</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Career guidance</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Portfolio reviews</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center"
+            >
+              <i class="fas fa-briefcase text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Freelancing
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Support in finding and managing online work opportunities.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Profile setup assistance</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Job search strategies</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Payment management</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 card-hover"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center"
+            >
+              <i class="fas fa-users text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Networking
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Connect with like-minded students and industry professionals.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Industry meetups</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Alumni network</span>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-red-600 dark:text-green-500 mr-2"
+                  ></i>
+                  <span>Collaboration opportunities</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Gallery</h2>
-                <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Moments from our training sessions, events, and success stories.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/launch.jpg" alt="Training Session" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">Jitume Lab Launching</h3>
-                            <p>Jitume Lab is launching 2024</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/officials.jpg" alt="Training Session" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">Officials 2024</h3>
-                            <p>Ajira Club Officials during launching</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/csr.jpg" alt="Group Discussion" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">CSR Activity</h3>
-                            <p>CSR activity with members at Kolenyo Market</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/csr1.jpg" alt="Graduation" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">Meetup session</h3>
-                            <p>members meeting up after CSR activity</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/training.jpg" alt="Guest Speaker" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">Training Session</h3>
-                            <p>Training session in Jitume Lab</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/bondo.JPG" alt="Workshop" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">Leaders Meetup</h3>
-                            <p>Leaders meeting up in Bondo TTI for Online work Talk</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item relative rounded-lg overflow-hidden h-64">
-                    <img src="images/gallery/bondo1.JPG" alt="Meeting" class="w-full h-full object-cover">
-                    <div class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0">
-                        <div class="text-center text-white p-4">
-                            <h3 class="text-xl font-bold mb-2">Leaders</h3>
-                            <p>Our Leaders during meeting in Bondo TTI</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <button class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300">View More Photos</button>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Our Gallery
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Moments from our training sessions, events, and success stories.
+          </p>
         </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/launch.jpg"
+              alt="Training Session"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">Jitume Lab Launching</h3>
+                <p>Jitume Lab is launching 2024</p>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/officials.jpg"
+              alt="Training Session"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">Officials 2024</h3>
+                <p>Ajira Club Officials during launching</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/csr.jpg"
+              alt="Group Discussion"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">CSR Activity</h3>
+                <p>CSR activity with members at Kolenyo Market</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/csr1.jpg"
+              alt="Graduation"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">Meetup session</h3>
+                <p>members meeting up after CSR activity</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/training.jpg"
+              alt="Guest Speaker"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">Training Session</h3>
+                <p>Training session in Jitume Lab</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/bondo.JPG"
+              alt="Workshop"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">Leaders Meetup</h3>
+                <p>Leaders meeting up in Bondo TTI for Online work Talk</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item relative rounded-lg overflow-hidden h-64">
+            <img
+              src="images/gallery/bondo1.JPG"
+              alt="Meeting"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="gallery-overlay absolute inset-0 flex items-center justify-center opacity-0"
+            >
+              <div class="text-center text-white p-4">
+                <h3 class="text-xl font-bold mb-2">Leaders</h3>
+                <p>Our Leaders during meeting in Bondo TTI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300"
+          >
+            View More Photos
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Events Section -->
     <section id="events" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Upcoming Events</h2>
-                <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Join our upcoming workshops, training sessions, and networking events.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center relative">
-                        <div class="absolute top-4 left-4 bg-white dark:bg-gray-900 text-red-600 dark:text-green-500 px-3 py-1 rounded-lg font-bold">
-                            <div class="text-sm">AUG</div>
-                            <div class="text-xl">15</div>
-                        </div>
-                        <i class="fas fa-code text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Web Development Bootcamp</h3>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300 mb-4">
-                            <i class="far fa-clock mr-2"></i>
-                            <span>10:00 AM - 4:00 PM</span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">A full-day intensive training on HTML, CSS, JavaScript and React fundamentals.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">
-                                <i class="fas fa-users mr-1"></i>
-                                <span>25/30 spots left</span>
-                            </div>
-                            <a href="#register" class="no-underline">
-                                <button class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition duration-300">Register</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center relative">
-                        <div class="absolute top-4 left-4 bg-white dark:bg-gray-900 text-red-600 dark:text-green-500 px-3 py-1 rounded-lg font-bold">
-                            <div class="text-sm">AUG</div>
-                            <div class="text-xl">22</div>
-                        </div>
-                        <i class="fas fa-chart-line text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Digital Marketing Masterclass</h3>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300 mb-4">
-                            <i class="far fa-clock mr-2"></i>
-                            <span>2:00 PM - 5:00 PM</span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn SEO, social media marketing, and content strategy from industry experts.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">
-                                <i class="fas fa-users mr-1"></i>
-                                <span>12/25 spots left</span>
-                            </div>
-                            <a href="#register" class="no-underline">
-                                <button class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition duration-300">Register</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center relative">
-                        <div class="absolute top-4 left-4 bg-white dark:bg-gray-900 text-red-600 dark:text-green-500 px-3 py-1 rounded-lg font-bold">
-                            <div class="text-sm">SEP</div>
-                            <div class="text-xl">05</div>
-                        </div>
-                        <i class="fas fa-laptop text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Freelancing 101 Workshop</h3>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300 mb-4">
-                            <i class="far fa-clock mr-2"></i>
-                            <span>9:00 AM - 12:00 PM</span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Everything you need to know to start earning online as a freelancer.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-sm text-gray-500 dark:text-gray-400">
-                                <i class="fas fa-users mr-1"></i>
-                                <span>18/20 spots left</span>
-                            </div>
-                            <a href="#register" class="no-underline">
-                                <button class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition duration-300">Register</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-8 shadow-lg">
-                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">Event Countdown</h3>
-                <div class="grid grid-cols-4 gap-4 max-w-2xl mx-auto text-center">
-                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold text-red-600 dark:text-green-500" id="countdown-days">00</div>
-                        <div class="text-gray-600 dark:text-gray-300">Days</div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold text-red-600 dark:text-green-500" id="countdown-hours">00</div>
-                        <div class="text-gray-600 dark:text-gray-300">Hours</div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold text-red-600 dark:text-green-500" id="countdown-minutes">00</div>
-                        <div class="text-gray-600 dark:text-gray-300">Minutes</div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold text-red-600 dark:text-green-500" id="countdown-seconds">00</div>
-                        <div class="text-gray-600 dark:text-gray-300">Seconds</div>
-                    </div>
-                </div>
-                <div class="text-center mt-6">
-                    <p class="text-lg text-gray-700 dark:text-gray-300">Until our next big event: <span class="font-bold">Web Development Bootcamp</span></p>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Upcoming Events
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Join our upcoming workshops, training sessions, and networking
+            events.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center relative"
+            >
+              <div
+                class="absolute top-4 left-4 bg-white dark:bg-gray-900 text-red-600 dark:text-green-500 px-3 py-1 rounded-lg font-bold"
+              >
+                <div class="text-sm">AUG</div>
+                <div class="text-xl">15</div>
+              </div>
+              <i class="fas fa-code text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Web Development Bootcamp
+              </h3>
+              <div
+                class="flex items-center text-gray-600 dark:text-gray-300 mb-4"
+              >
+                <i class="far fa-clock mr-2"></i>
+                <span>10:00 AM - 4:00 PM</span>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                A full-day intensive training on HTML, CSS, JavaScript and React
+                fundamentals.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="text-sm text-gray-500 dark:text-gray-400">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>25/30 spots left</span>
+                </div>
+                <a href="#register" class="no-underline">
+                  <button
+                    class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition duration-300"
+                  >
+                    Register
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center relative"
+            >
+              <div
+                class="absolute top-4 left-4 bg-white dark:bg-gray-900 text-red-600 dark:text-green-500 px-3 py-1 rounded-lg font-bold"
+              >
+                <div class="text-sm">AUG</div>
+                <div class="text-xl">22</div>
+              </div>
+              <i class="fas fa-chart-line text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Digital Marketing Masterclass
+              </h3>
+              <div
+                class="flex items-center text-gray-600 dark:text-gray-300 mb-4"
+              >
+                <i class="far fa-clock mr-2"></i>
+                <span>2:00 PM - 5:00 PM</span>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Learn SEO, social media marketing, and content strategy from
+                industry experts.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="text-sm text-gray-500 dark:text-gray-400">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>12/25 spots left</span>
+                </div>
+                <a href="#register" class="no-underline">
+                  <button
+                    class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition duration-300"
+                  >
+                    Register
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+          >
+            <div
+              class="h-48 bg-red-600 dark:bg-green-600 flex items-center justify-center relative"
+            >
+              <div
+                class="absolute top-4 left-4 bg-white dark:bg-gray-900 text-red-600 dark:text-green-500 px-3 py-1 rounded-lg font-bold"
+              >
+                <div class="text-sm">SEP</div>
+                <div class="text-xl">05</div>
+              </div>
+              <i class="fas fa-laptop text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Freelancing 101 Workshop
+              </h3>
+              <div
+                class="flex items-center text-gray-600 dark:text-gray-300 mb-4"
+              >
+                <i class="far fa-clock mr-2"></i>
+                <span>9:00 AM - 12:00 PM</span>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Everything you need to know to start earning online as a
+                freelancer.
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="text-sm text-gray-500 dark:text-gray-400">
+                  <i class="fas fa-users mr-1"></i>
+                  <span>18/20 spots left</span>
+                </div>
+                <a href="#register" class="no-underline">
+                  <button
+                    class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition duration-300"
+                  >
+                    Register
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+          <h3
+            class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6"
+          >
+            Event Countdown
+          </h3>
+          <div class="grid grid-cols-4 gap-4 max-w-2xl mx-auto text-center">
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
+              <div
+                class="text-4xl font-bold text-red-600 dark:text-green-500"
+                id="countdown-days"
+              >
+                00
+              </div>
+              <div class="text-gray-600 dark:text-gray-300">Days</div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
+              <div
+                class="text-4xl font-bold text-red-600 dark:text-green-500"
+                id="countdown-hours"
+              >
+                00
+              </div>
+              <div class="text-gray-600 dark:text-gray-300">Hours</div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
+              <div
+                class="text-4xl font-bold text-red-600 dark:text-green-500"
+                id="countdown-minutes"
+              >
+                00
+              </div>
+              <div class="text-gray-600 dark:text-gray-300">Minutes</div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
+              <div
+                class="text-4xl font-bold text-red-600 dark:text-green-500"
+                id="countdown-seconds"
+              >
+                00
+              </div>
+              <div class="text-gray-600 dark:text-gray-300">Seconds</div>
+            </div>
+          </div>
+          <div class="text-center mt-6">
+            <p class="text-lg text-gray-700 dark:text-gray-300">
+              Until our next big event:
+              <span class="font-bold">Web Development Bootcamp</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Resources Section -->
     <section class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Resources</h2>
-                <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Downloadable materials and links to help you in your digital skills journey.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-red-600 dark:bg-green-600 p-4">
-                        <h3 class="text-xl font-bold text-white text-center">PDF Guides</h3>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-4">
-                            <li class="flex items-center">
-                                <i class="fas fa-file-pdf text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Freelancing Starter Guide</h4>
-                                    <a href="Downloads/Freelancing-for-Beginners-The-Ultimate-Guide-to-Freelancing-PDF-Book-by-Inu-Etc.pdf" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Download PDF</a>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-file-pdf text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Digital Marketing Basics</h4>
-                                    <a href="Downloads/ultimate-guide-to-digital-marketing.pdf" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Download PDF</a>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-file-pdf text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Web Development Roadmap</h4>
-                                    <a href="Downloads/frontend.pdf" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Download PDF</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-red-600 dark:bg-green-600 p-4">
-                        <h3 class="text-xl font-bold text-white text-center">Video Tutorials</h3>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-4">
-                            <li class="flex items-center">
-                                <i class="fab fa-youtube text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">HTML & CSS Crash Course</h4>
-                                    <a href="https://youtu.be/hu-q2zYwEYs?si=3pvQncjycmJBBVUM" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Watch Now</a>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fab fa-youtube text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Creating a Portfolio Website</h4>
-                                    <a href="https://youtu.be/jefp7vkPnuE?si=jDWQdG9dBbirixb_" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Watch Now</a>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fab fa-youtube text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Freelance Profile Setup</h4>
-                                    <a href="https://youtu.be/H79HitjAB2k?si=xBXOVvNjj79VQk5E" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Watch Now</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-red-600 dark:bg-green-600 p-4">
-                        <h3 class="text-xl font-bold text-white text-center">Useful Links</h3>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-4">
-                            <li class="flex items-center">
-                                <i class="fas fa-globe text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Official Ajira Digital Portal</h4>
-                                    <a href="#" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Visit Site</a>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-briefcase text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Freelance Job Platforms</h4>
-                                    <a href="https://www.twine.net/jobs" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Explore</a>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-graduation-cap text-red-600 dark:text-green-500 text-2xl mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Free Online Courses</h4>
-                                    <a href="https://www.coursera.org/courses?query=free" class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500">Browse</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Resources
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Downloadable materials and links to help you in your digital skills
+            journey.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="bg-red-600 dark:bg-green-600 p-4">
+              <h3 class="text-xl font-bold text-white text-center">
+                PDF Guides
+              </h3>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-4">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-file-pdf text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Freelancing Starter Guide
+                    </h4>
+                    <a
+                      href="Downloads/Freelancing-for-Beginners-The-Ultimate-Guide-to-Freelancing-PDF-Book-by-Inu-Etc.pdf"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Download PDF</a
+                    >
+                  </div>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-file-pdf text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Digital Marketing Basics
+                    </h4>
+                    <a
+                      href="Downloads/ultimate-guide-to-digital-marketing.pdf"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Download PDF</a
+                    >
+                  </div>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-file-pdf text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Web Development Roadmap
+                    </h4>
+                    <a
+                      href="Downloads/frontend.pdf"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Download PDF</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="bg-red-600 dark:bg-green-600 p-4">
+              <h3 class="text-xl font-bold text-white text-center">
+                Video Tutorials
+              </h3>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-4">
+                <li class="flex items-center">
+                  <i
+                    class="fab fa-youtube text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      HTML & CSS Crash Course
+                    </h4>
+                    <a
+                      href="https://youtu.be/hu-q2zYwEYs?si=3pvQncjycmJBBVUM"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Watch Now</a
+                    >
+                  </div>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fab fa-youtube text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Creating a Portfolio Website
+                    </h4>
+                    <a
+                      href="https://youtu.be/jefp7vkPnuE?si=jDWQdG9dBbirixb_"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Watch Now</a
+                    >
+                  </div>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fab fa-youtube text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Freelance Profile Setup
+                    </h4>
+                    <a
+                      href="https://youtu.be/H79HitjAB2k?si=xBXOVvNjj79VQk5E"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Watch Now</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="bg-red-600 dark:bg-green-600 p-4">
+              <h3 class="text-xl font-bold text-white text-center">
+                Useful Links
+              </h3>
+            </div>
+            <div class="p-6">
+              <ul class="space-y-4">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-globe text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Official Ajira Digital Portal
+                    </h4>
+                    <a
+                      href="#"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Visit Site</a
+                    >
+                  </div>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-briefcase text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Freelance Job Platforms
+                    </h4>
+                    <a
+                      href="https://www.twine.net/jobs"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Explore</a
+                    >
+                  </div>
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-graduation-cap text-red-600 dark:text-green-500 text-2xl mr-4"
+                  ></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white">
+                      Free Online Courses
+                    </h4>
+                    <a
+                      href="https://www.coursera.org/courses?query=free"
+                      class="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-green-500"
+                      >Browse</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaders Section -->
+    <section
+      id="leaders"
+      class="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden"
+    >
+      <!-- Decorative Elements -->
+      <div
+        class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+      >
+        <div
+          class="absolute top-20 left-10 w-32 h-32 rounded-full bg-red-500 dark:bg-green-500 filter blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-green-500 dark:bg-red-500 filter blur-3xl"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 text-center relative z-10">
+        <!-- Section Heading -->
+        <div class="mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            data-aos="fade-up"
+          >
+            Meet Our Leaders
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p
+            class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Driving innovation and empowering digital careers.
+          </p>
+        </div>
+
+        <!-- Patron -->
+        <div class="mb-16">
+          <h3
+            class="text-2xl font-semibold text-gray-800 dark:text-white mb-8"
+            data-aos="fade-up"
+          >
+            Patron
+          </h3>
+          <div
+            class="flex justify-center"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="leader-card bg-white dark:bg-gray-800 group">
+              <div class="profile-frame mx-auto mb-4 floating">
+                <img
+                  src="images/leaders/patron.jpg"
+                  alt="Patron"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white">
+                Gideon Onduru
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Patron
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Dedicated to guiding Ajira Club for sustainable growth and
+                impact.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Current Leaders -->
+        <div class="mb-16">
+          <h3
+            class="text-2xl font-semibold text-gray-800 dark:text-white mb-8"
+            data-aos="fade-up"
+          >
+            Current Leaders
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Leader 1 - Chairperson -->
+            <div
+              class="leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="profile-frame mx-auto mb-4">
+                <img
+                  src="images/leaders/ken.jpg"
+                  alt="Chairman"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Wambia Kennedy
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Chairperson
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Leading with vision and commitment to empower youth digitally.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fas fa-globe"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Leader 2 - Assistant Chairperson -->
+            <div
+              class="leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="profile-frame mx-auto mb-4">
+                <img
+                  src="images/leaders/wambia1.png"
+                  alt="Assistant Chairperson"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                George Onyango
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Assistant Chairperson
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Supporting leadership and ensuring smooth coordination of
+                programs.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Leader 3 - Organizing Secretary -->
+            <div
+              class="leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="profile-frame mx-auto mb-4">
+                <img
+                  src="images/leaders/organizing.jpg"
+                  alt="Organizing Secretary"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Harry Ouko
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Organizing Secretary
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Responsible for event planning and seamless execution of
+                activities.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Leader 4 - Secretary -->
+            <div
+              class="leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="profile-frame mx-auto mb-4">
+                <img
+                  src="images/leaders/secretary.jpg"
+                  alt="Secretary"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Billy James
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Secretary
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Ensuring effective communication and documentation across the
+                club.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Leader 5 - Assistant Secretary -->
+            <div
+              class="leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div class="profile-frame mx-auto mb-4">
+                <img
+                  src="images/leaders/ass-secretary.jpg"
+                  alt="Assistant Secretary"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Sarah Owino
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Assistant Secretary
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Assisting in record-keeping and supporting administrative
+                functions.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Leader 6 - Treasurer -->
+            <div
+              class="leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div class="profile-frame mx-auto mb-4">
+                <img
+                  src="images/leaders/treasurer.jpg"
+                  alt="Treasurer"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Martha Atieno
+                <span class="role-underline"></span>
+              </h4>
+              <p class="text-red-600 dark:text-green-400 font-medium mb-2">
+                Treasurer
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                Managing financial resources for transparency and
+                accountability.
+              </p>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-icon group-hover:bg-red-600 dark:group-hover:bg-green-600"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Former Leaders -->
+        <div>
+          <h3
+            class="text-2xl font-semibold text-gray-800 dark:text-white mb-8"
+            data-aos="fade-up"
+          >
+            Former Leaders
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Former 1 -->
+            <div
+              class="former-leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="profile-frame small mx-auto mb-4">
+                <img
+                  src="images/leaders/former1.jpg"
+                  alt="Former Leader"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Danneta Collet
+              </h4>
+              <p class="text-red-600 dark:text-green-400 text-sm">
+                Former Chairlady (2024)
+              </p>
+              <div class="hover-content">
+                <p class="text-gray-600 dark:text-gray-300 text-xs mt-2">
+                  Served from 2022-2024
+                </p>
+              </div>
+            </div>
+
+            <!-- Former 2 -->
+            <div
+              class="former-leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="profile-frame small mx-auto mb-4">
+                <img
+                  src="images/leaders/former2.jpg"
+                  alt="Former Leader"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                James Abwao
+              </h4>
+              <p class="text-red-600 dark:text-green-400 text-sm">
+                Former Chairperson (2024)
+              </p>
+              <div class="hover-content">
+                <p class="text-gray-600 dark:text-gray-300 text-xs mt-2">
+                  Served from 2021-2024
+                </p>
+              </div>
+            </div>
+
+            <!-- Former 3 -->
+            <div
+              class="former-leader-card bg-white dark:bg-gray-800 group"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="profile-frame small mx-auto mb-4">
+                <img
+                  src="images/leaders/former3.jpg"
+                  alt="Former Leader"
+                  class="profile-img"
+                  loading="lazy"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                Grace Atieno
+              </h4>
+              <p class="text-red-600 dark:text-green-400 text-sm">
+                Former Organizing Sec (2018 - 2020)
+              </p>
+              <div class="hover-content">
+                <p class="text-gray-600 dark:text-gray-300 text-xs mt-2">
+                  Pioneered our community outreach programs
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Join Section -->
     <section id="join" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/2 bg-red-600 dark:bg-green-600 p-12 flex items-center">
-                        <div>
-                            <h2 class="text-3xl font-bold text-white mb-4">Join Ajira Digital Club</h2>
-                            <p class="text-white mb-6">Become part of our community and unlock digital opportunities.</p>
-                            <ul class="space-y-3 text-white">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle mr-3"></i>
-                                    <span>Access to exclusive training</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle mr-3"></i>
-                                    <span>Networking opportunities</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle mr-3"></i>
-                                    <span>Mentorship from experts</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check-circle mr-3"></i>
-                                    <span>Job placement assistance</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 p-12" id="register">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Registration Form</h3>
-                        <form id="registrationForm">
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="phone" class="block text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
-                                <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                            </div>
-                            <div class="mb-6">
-                                <label for="interest" class="block text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
-                                <select id="interest" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                                    <option value="">Select an option</option>
-                                    <option value="web-development">Web Development</option>
-                                    <option value="digital-marketing">Digital Marketing</option>
-                                    <option value="graphic-design">Graphic Design</option>
-                                    <option value="data-analysis">Data Analysis</option>
-                                    <option value="freelancing">Freelancing</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="w-full bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white py-3 rounded-lg font-bold transition duration-300">Submit Application</button>
-                        </form>
-                    </div>
-                </div>
+      <div class="container mx-auto px-4">
+        <div
+          class="max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+        >
+          <div class="md:flex">
+            <div
+              class="md:w-1/2 bg-red-600 dark:bg-green-600 p-12 flex items-center"
+            >
+              <div>
+                <h2 class="text-3xl font-bold text-white mb-4">
+                  Join Ajira Digital Club
+                </h2>
+                <p class="text-white mb-6">
+                  Become part of our community and unlock digital opportunities.
+                </p>
+                <ul class="space-y-3 text-white">
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <span>Access to exclusive training</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <span>Networking opportunities</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <span>Mentorship from experts</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <span>Job placement assistance</span>
+                  </li>
+                </ul>
+              </div>
             </div>
+            <div class="md:w-1/2 p-12" id="register">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Registration Form
+              </h3>
+              <form id="registrationForm">
+                <div class="mb-4">
+                  <label
+                    for="name"
+                    class="block text-gray-700 dark:text-gray-300 mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="email"
+                    class="block text-gray-700 dark:text-gray-300 mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="phone"
+                    class="block text-gray-700 dark:text-gray-300 mb-2"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    required
+                  />
+                </div>
+                <div class="mb-6">
+                  <label
+                    for="interest"
+                    class="block text-gray-700 dark:text-gray-300 mb-2"
+                    >Area of Interest</label
+                  >
+                  <select
+                    id="interest"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    required
+                  >
+                    <option value="">Select an option</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="data-analysis">Data Analysis</option>
+                    <option value="freelancing">Freelancing</option>
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white py-3 rounded-lg font-bold transition duration-300"
+                >
+                  Submit Application
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Contact Us</h2>
-                <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Get in touch with the Ajira Digital Club team for any inquiries.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Our Information</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
-                                <i class="fas fa-map-marker-alt text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Location</h4>
-                                <p class="text-gray-600 dark:text-gray-300">Seme Technical and Vocational College, Ajira Digital Center, Jitume Lab I</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
-                                <i class="fas fa-envelope text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Email</h4>
-                                <p class="text-gray-600 dark:text-gray-300">ajira@semetvc.ac.ke</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
-                                <i class="fas fa-phone-alt text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Phone</h4>
-                                <p class="text-gray-600 dark:text-gray-300">+254 743 394 373</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
-                                <i class="fab fa-whatsapp text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 dark:text-white mb-1">WhatsApp</h4>
-                                <p class="text-gray-600 dark:text-gray-300">+254 743 394 373</p>
-                                <a href="https://wa.me/254700123456" class="text-sm text-red-600 dark:text-green-500 hover:underline">Send us a message</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="font-bold text-gray-900 dark:text-white mb-4">Follow Us</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="mb-4">
-                            <label for="contactName" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
-                            <input type="text" id="contactName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="contactEmail" class="block text-gray-700 dark:text-gray-300 mb-2">Your Email</label>
-                            <input type="email" id="contactEmail" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="contactSubject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                            <input type="text" id="contactSubject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="contactMessage" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                            <textarea id="contactMessage" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required></textarea>
-                        </div>
-                        <button type="submit" class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300">Send Message</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="mt-16 bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden">
-                <div class="h-96 w-full">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.672672073686!2d34.4751872!3d-0.0903321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d5538b9cf9a09d%3A0x96883cca5cc0c8fb!2sSeme%20Technical%20and%20Vocational%20College!5e0!3m2!1sen!2ske!4v1732137600000!5m2!1sen!2ske" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Contact Us
+          </h2>
+          <div class="w-20 h-1 bg-red-600 dark:bg-green-500 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Get in touch with the Ajira Digital Club team for any inquiries.
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Our Information
+            </h3>
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
+                  <i class="fas fa-map-marker-alt text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">
+                    Location
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Seme Technical and Vocational College, Ajira Digital Center,
+                    Jitume Lab I
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
+                  <i class="fas fa-envelope text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">
+                    Email
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    ajira@semetvc.ac.ke
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
+                  <i class="fas fa-phone-alt text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">
+                    Phone
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    +254 743 394 373
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="text-red-600 dark:text-green-500 mr-4 mt-1">
+                  <i class="fab fa-whatsapp text-2xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">
+                    WhatsApp
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    +254 743 394 373
+                  </p>
+                  <a
+                    href="https://wa.me/254700123456"
+                    class="text-sm text-red-600 dark:text-green-500 hover:underline"
+                    >Send us a message</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-4">
+                Follow Us
+              </h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded-full hover:bg-red-600 dark:hover:bg-green-600 hover:text-white transition duration-300"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Send Us a Message
+            </h3>
+            <form id="contactForm">
+              <div class="mb-4">
+                <label
+                  for="contactName"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  id="contactName"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="contactEmail"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Your Email</label
+                >
+                <input
+                  type="email"
+                  id="contactEmail"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="contactSubject"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="contactSubject"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="contactMessage"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="contactMessage"
+                  rows="4"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-8 py-3 rounded-lg font-bold transition duration-300"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="mt-16 bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden"
+        >
+          <div class="h-96 w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.672672073686!2d34.4751872!3d-0.0903321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d5538b9cf9a09d%3A0x96883cca5cc0c8fb!2sSeme%20Technical%20and%20Vocational%20College!5e0!3m2!1sen!2ske!4v1732137600000!5m2!1sen!2ske"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
     </section>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <!-- About Section -->
-                <div>
-                    <div class="flex items-center mb-4">
-                        <img src="images/ajira-logo.webp" alt="Ajira Digital Logo" class="h-10 mr-3">
-                        <span class="text-xl font-bold font-inter">Ajira Digital Club</span>
-                    </div>
-                    <p class="text-gray-400 mb-4 font-inter">Empowering students with digital skills for the future workforce.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Twitter">
-                            <i class="fab fa-x-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4 font-inter">Quick Links</h3>
-                    <ul class="space-y-2 font-inter">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
-                        <li><a href="#events" class="text-gray-400 hover:text-white transition duration-300">Events</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Resources -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4 font-inter">Resources</h3>
-                    <ul class="space-y-2 font-inter">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Training Materials</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Video Tutorials</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Freelance Guides</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Career Resources</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Newsletter -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4 font-inter">Newsletter</h3>
-                    <p class="text-gray-400 mb-4 font-inter">Subscribe to our newsletter for updates on events and opportunities.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full bg-white font-inter" aria-label="Email for newsletter">
-                        <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-lg transition duration-300">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- About Section -->
+          <div>
+            <div class="flex items-center mb-4">
+              <img
+                src="images/ajira-logo.webp"
+                alt="Ajira Digital Logo"
+                class="h-10 mr-3"
+              />
+              <span class="text-xl font-bold font-inter"
+                >Ajira Digital Club</span
+              >
             </div>
-            
-            <!-- Footer Bottom -->
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 font-inter">
-                <p>&copy; 2025 Ajira Digital Club - Seme TVC. All rights reserved.</p>
-                <p class="mt-2">Powered by: <a href="https://lates-portfolio-v1.vercel.app/" class="text-blue-400 hover:text-blue-300 transition duration-300">Mastermindcreat</a></p>
+            <p class="text-gray-400 mb-4 font-inter">
+              Empowering students with digital skills for the future workforce.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                aria-label="Twitter"
+              >
+                <i class="fab fa-x-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
             </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-bold mb-4 font-inter">Quick Links</h3>
+            <ul class="space-y-2 font-inter">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#events"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Events</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h3 class="text-lg font-bold mb-4 font-inter">Resources</h3>
+            <ul class="space-y-2 font-inter">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Training Materials</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Video Tutorials</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Freelance Guides</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Career Resources</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Blog</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h3 class="text-lg font-bold mb-4 font-inter">Newsletter</h3>
+            <p class="text-gray-400 mb-4 font-inter">
+              Subscribe to our newsletter for updates on events and
+              opportunities.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full bg-white font-inter"
+                aria-label="Email for newsletter"
+              />
+              <button
+                type="submit"
+                class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-lg transition duration-300"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
         </div>
+
+        <!-- Footer Bottom -->
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 font-inter"
+        >
+          <p>&copy; 2025 Ajira Digital Club - Seme TVC. All rights reserved.</p>
+          <p class="mt-2">
+            Powered by:
+            <a
+              href="https://lates-portfolio-v1.vercel.app/"
+              class="text-blue-400 hover:text-blue-300 transition duration-300"
+              >Mastermindcreat</a
+            >
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
-        <div class="relative max-w-4xl w-full">
-            <button id="closeLightbox" class="absolute -top-12 right-0 text-white text-3xl">
-                <i class="fas fa-times"></i>
-            </button>
-            <img id="lightboxImage" src="" alt="" class="w-full h-auto max-h-screen object-contain">
-            <div class="flex justify-between mt-4">
-                <button id="prevImage" class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg">
-                    <i class="fas fa-chevron-left"></i> Previous
-                </button>
-                <button id="nextImage" class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg">
-                    Next <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
+    <div
+      id="lightbox"
+      class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4"
+    >
+      <div class="relative max-w-4xl w-full">
+        <button
+          id="closeLightbox"
+          class="absolute -top-12 right-0 text-white text-3xl"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <img
+          id="lightboxImage"
+          src=""
+          alt=""
+          class="w-full h-auto max-h-screen object-contain"
+        />
+        <div class="flex justify-between mt-4">
+          <button
+            id="prevImage"
+            class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+          >
+            <i class="fas fa-chevron-left"></i> Previous
+          </button>
+          <button
+            id="nextImage"
+            class="bg-red-600 dark:bg-green-600 hover:bg-red-700 dark:hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+          >
+            Next <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

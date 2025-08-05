@@ -63,3 +63,176 @@ body {
             from { transform: translateY(0); }
             to { transform: translateY(-4px); }
         }
+        /* Hexagonal Profile Frame */
+  .profile-frame {
+    width: 130px;
+    height: 130px;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+    background: linear-gradient(135deg, #dc2626, #f87171);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .profile-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f87171, #dc2626);
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .profile-frame:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+  }
+  
+  .profile-frame:hover::before {
+    opacity: 1;
+    animation: rotate 4s linear infinite;
+  }
+  
+  .profile-frame.small {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: inherit;
+    border: 3px solid #fff;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .profile-frame:hover img {
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(0.95);
+  }
+
+  /* Leader Cards */
+  .leader-card {
+    position: relative;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .leader-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Role Underline */
+  .role-underline {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #dc2626;
+    margin: 0.5rem auto;
+    transition: all 0.4s ease;
+  }
+
+  .dark .role-underline {
+    background: #10b981;
+  }
+
+  .leader-card:hover .role-underline {
+    width: 80px;
+    background: #f87171;
+  }
+
+  .dark .leader-card:hover .role-underline {
+    background: #34d399;
+  }
+
+  /* Social Icons */
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    background: #f3f4f6;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .dark .social-icon {
+    background: #374151;
+    color: #d1d5db;
+  }
+
+  .social-icon:hover {
+    color: white !important;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Former Leader Cards */
+  .former-leader-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+  }
+
+  .former-leader-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .former-leader-card:hover .hover-content {
+    max-height: 100px;
+  }
+
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .floating {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* Rotate Animation */
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .profile-frame {
+      width: 110px;
+      height: 110px;
+    }
+    
+    .profile-frame.small {
+      width: 80px;
+      height: 80px;
+    }
+
+    .leader-card {
+      padding: 1.5rem;
+    }
+  }
